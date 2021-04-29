@@ -1,0 +1,30 @@
+- hosts: 127.0.0.1
+  tasks:
+  - name: ec2
+    amazon.aws.ec2:
+            region: us-east-1
+            image: ami-096fda3c22c1c990a
+            instance_type: t2.micro 
+            group_id: sg-0cea52956061654dd
+            key_name: deksh
+            count: 1
+            instance_tags:
+                    name: loadbalancer
+            assign_public_ip: yes
+            vpc_subnet_id: subnet-8c4134ea
+            
+
+  - name: ec2 
+    amazon.aws.ec2:
+            region: us-east-1
+            image: ami-096fda3c22c1c990a
+            instance_type: t2.micro
+            group_id: sg-0cea52956061654dd
+            key_name: deksh
+            count: 2
+            instance_tags:
+                    name: web_server
+            state: present
+            assign_public_ip: yes
+            vpc_subnet_id: subnet-8c4134ea
+       
