@@ -1,0 +1,6 @@
+- hosts: tag_name_webserver
+  roles:
+      - lb
+- hosts: tag_name_loadbalancer
+  roles:
+     - webserver
